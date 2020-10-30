@@ -2,9 +2,9 @@ name: build
 
 on:
   push:
-    branches: [ unstable ]
+    branches: [ unstable, ghactions ]
   pull_request:
-    branches: [ unstable ]
+    branches: [ unstable, ghactions ]
 
 jobs:
   build:
@@ -90,4 +90,4 @@ jobs:
       run: |
         source $HOME/install/share/triqs/triqsvars.sh
         cd build
-        ctest -j2 --output-on-failure
+        CTEST_OUTPUT_ON_FAILURE=1 ctest -j2
